@@ -12,4 +12,4 @@ bash start.sh
 
 
 
-
+cd~/setup-sqlbdcbask setup-sqlbdc.sh
