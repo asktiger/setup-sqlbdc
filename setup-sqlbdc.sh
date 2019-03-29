@@ -15,7 +15,7 @@ EOF
 yum install -y kubectl 
 
 mkdir -p ~/.kube
-scp 10.106.12.111:/etc/kubernetes/admin.conf ~/.kube/
+scp 10.106.12.111:/etc/kubernetes/admin.conf ~/.kube/config
 
 #Deploy SQL 2019 big data cluster CTP2.3
 yum install -y centos-release-scl
