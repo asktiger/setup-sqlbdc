@@ -9,7 +9,7 @@ ansible-playbook -i hosts main.yml -b -v
 cd /tmp/kubernetes-installation-template
 bash start.sh
 
+cd ~/setup-sqlbdc
+bash setup-sqlbdc.sh
 
 
-
-cd~/setup-sqlbdcbask setup-sqlbdc.sh
