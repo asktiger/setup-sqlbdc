@@ -27,7 +27,7 @@ pip3 install --upgrade pip
 pip3 install -r https://private-repo.microsoft.com/python/ctp-2.3/mssqlctl/requirements.txt
 
 #Setup local volume dtorage class
-ansible master-1 -m command -a"ubectl apply -f ~/local-storage-provisioner.yaml"
+ansible master-1 -m command -a "kubectl apply -f ~/local-storage-provisioner.yaml"
 
 #Install SQL 2019 BDC 
 export ACCEPT_EULA=Yes
