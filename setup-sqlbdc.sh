@@ -12,19 +12,28 @@ gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg
        https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
 EOF
 
-yum install -y kubectl 
+yum install -y kubectl-1.13.5 
 
-mkdir -p ~/.kube
-scp 10.106.12.111:/etc/kubernetes/admin.conf ~/.kube/config
+if  [ ~/.kube/config ];
+then
+  rm -f ~/.kube/config
+  scp 10.106.12.111:/etc/kubernetes/admin.conf ~/.kube/config
+
+else
+  mkdir -p ~/.kube
+  scp 10.106.12.111:/etc/kubernetes/admin.conf ~/.kube/config
+fi
 
 #Deploy SQL 2019 big data cluster CTP2.3
 yum install -y centos-release-scl
 yum install -y rh-python36
 source /opt/rh/rh-python36/enable
 
-pip3 install --upgrade pip
+pip install kubernetes==8.0.1
+pip install --upgrade pip
 
-pip3 install -r https://private-repo.microsoft.com/python/ctp-2.3/mssqlctl/requirements.txt
+pip install -r https://private-repo.microsoft.com/python/ctp-2.4/mssqlctl/requirements.txt
+#pip3 install -r https://private-repo.microsoft.com/python/ctp-2.3/mssqlctl/requirements.txt
 
 #Setup local volume dtorage class
 ansible master-1 -m command -a "kubectl apply -f ~/local-storage-provisioner.yaml"
